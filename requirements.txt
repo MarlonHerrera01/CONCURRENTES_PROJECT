@@ -1,0 +1,7 @@
+streamlit
+numpy
+scikit-image
+scipy
+mpi4py
+matplotlib
+google-images-search
