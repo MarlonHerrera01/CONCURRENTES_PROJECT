@@ -15,6 +15,7 @@ from scipy.signal import convolve
 
 def descarga(imagenes):
     # Seccion encargada de la descarga de imagenes
+    print("Marlon")
     semaforo = multiprocessing.Semaphore(2)  # Permite hasta 2 hilos al mismo tiempo
     Process_jobs = []
     for i in range(10):
@@ -34,8 +35,8 @@ def descargarImagenes(i, semaforo):
 
         # Parámetros de búsqueda únicos por proceso
         _search_params = {
-            'q': f'... {i}',  # Agrega un término de búsqueda que haga única cada consulta
-            'num': 4,
+            'q': f'colores {i}',  # Agrega un término de búsqueda que haga única cada consulta
+            'num': 1000,
             'safe': 'high',
             'fileType': 'jpg|gif|png',
             'imgType': 'photo',
