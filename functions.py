@@ -1,4 +1,3 @@
-import multiprocessing
 import time
 import random
 from google_images_search import GoogleImagesSearch
@@ -9,17 +8,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.ndimage import convolve
 from skimage import io, color
-from multiprocessing import  Process, Queue
+from multiprocessing import Process, Queue, Semaphore
 from mpi4py import MPI
 from scipy.signal import convolve
 
 def descarga(imagenes):
     # Seccion encargada de la descarga de imagenes
     print("Marlon")
-    semaforo = multiprocessing.Semaphore(2)  # Permite hasta 2 hilos al mismo tiempo
+    semaforo = Semaphore(2)  # Permite hasta 2 hilos al mismo tiempo
     Process_jobs = []
     for i in range(10):
-        p = multiprocessing.Process(target=descargarImagenes, args=(i, semaforo))
+        p = Process(target=descargarImagenes, args=(i, semaforo))
         Process_jobs.append(p)
         p.start()
 
